@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOP Legalitas Usaha Indonesia</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f5f3ee;
+  --surface: #ffffff;
+  --surface2: #f0ede6;
+  --border: #e2ddd4;
+  --border2: #cdc8bc;
+  --text: #1a1814;
+  --text2: #6b6459;
+  --text3: #a09890;
+  --accent: #2d6a4f;
+  --accent-bg: #e8f5ee;
+  --accent-text: #1b4332;
+  --amber: #92400e;
+  --amber-bg: #fef3c7;
+  --blue: #1e3a5f;
+  --blue-bg: #dbeafe;
+  --coral: #7c2d12;
+  --coral-bg: #fee2e2;
+  --purple: #3b0764;
+  --purple-bg: #f3e8ff;
+  --radius: 10px;
+  --radius-lg: 14px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* PROGRESS BAR */
+.nav-progress {
+  height: 3px; background: var(--accent);
+  position: fixed; top: 0; left: 0; z-index: 200;
+  transition: width .1s; width: 0%;
+}
+
+/* ===== DESKTOP LAYOUT ===== */
+.layout { display: flex; min-height: 100vh; }
+
+.sidebar {
+  width: 270px; flex-shrink: 0;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  padding: 20px 0;
+  position: sticky; top: 0;
+  height: 100vh; overflow-y: auto;
+}
+.sidebar-logo {
+  padding: 0 18px 16px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 10px;
+}
+.sidebar-logo h1 { font-size: 14px; font-weight: 700; color: var(--accent); line-height: 1.3; }
+.sidebar-logo p { font-size: 11px; color: var(--text3); margin-top: 2px; }
+.sidebar-search { padding: 8px 14px 10px; }
+.sidebar-search input {
+  width: 100%; padding: 7px 11px;
+  font-family: inherit; font-size: 13px;
+  border: 1px solid var(--border); border-radius: var(--radius);
+  background: var(--bg); color: var(--text); outline: none;
+}
+.sidebar-search input:focus { border-color: var(--accent); }
+.sidebar-cat {
+  padding: 5px 18px;
+  font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .08em;
+  color: var(--text3); margin-top: 6px;
+}
+.sidebar-item {
+  display: flex; align-items: center; gap: 8px;
+  padding: 7px 18px;
+  font-size: 13px; color: var(--text2);
+  cursor: pointer; text-decoration: none;
+  border-left: 3px solid transparent;
+  transition: all .15s;
+}
+.sidebar-item:hover { background: var(--bg); color: var(--text); }
+.sidebar-item.active {
+  background: var(--accent-bg); color: var(--accent-text);
+  border-left-color: var(--accent); font-weight: 600;
+}
+.sidebar-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+
+/* MAIN */
+.main { flex: 1; min-width: 0; }
+
+.hero {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 36px 44px 28px;
+}
+.hero h2 { font-size: 26px; font-weight: 700; margin-bottom: 8px; }
+.hero p { color: var(--text2); max-width: 520px; line-height: 1.7; font-size: 14px; }
+.hero-stats { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+.stat {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 10px 18px; text-align: center;
+}
+.stat .num { font-size: 20px; font-weight: 700; color: var(--accent); }
+.stat .lbl { font-size: 11px; color: var(--text3); margin-top: 1px; }
+
+.content { padding: 28px 44px; max-width: 880px; }
+
+/* SERVICE SECTION */
+.service-section { margin-bottom: 52px; }
+.service-header {
+  display: flex; align-items: flex-start; gap: 14px;
+  margin-bottom: 20px; padding-bottom: 18px;
+  border-bottom: 2px solid var(--border);
+}
+.service-icon {
+  width: 44px; height: 44px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; flex-shrink: 0;
+}
+.service-title { font-size: 20px; font-weight: 700; margin-bottom: 3px; }
+.service-sub { font-size: 13px; color: var(--text2); }
+.badges { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 8px; }
+.badge {
+  font-size: 11px; font-weight: 600;
+  padding: 2px 9px; border-radius: 99px;
+  font-family: 'DM Mono', monospace;
+}
+.b-green { background: var(--accent-bg); color: var(--accent-text); }
+.b-amber { background: var(--amber-bg); color: var(--amber); }
+.b-blue { background: var(--blue-bg); color: var(--blue); }
+.b-gray { background: var(--surface2); color: var(--text2); }
+.b-coral { background: var(--coral-bg); color: var(--coral); }
+.b-purple { background: var(--purple-bg); color: var(--purple); }
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 8px; margin-bottom: 20px;
+}
+.info-cell {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 10px 12px;
+}
+.info-cell .lbl {
+  font-size: 10px; color: var(--text3); margin-bottom: 2px;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .04em;
+}
+.info-cell .val { font-size: 13px; font-weight: 600; color: var(--text); }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+.col-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 16px 18px;
+}
+.col-card h4 {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .05em; color: var(--text3); margin-bottom: 10px;
+}
+.doc-list, .step-list { list-style: none; }
+.doc-list li {
+  font-size: 13px; padding: 5px 0;
+  border-bottom: 1px solid var(--bg);
+  display: flex; gap: 8px; align-items: flex-start; line-height: 1.4;
+}
+.doc-list li:last-child { border-bottom: none; }
+.doc-list li::before {
+  content: ""; width: 5px; height: 5px; border-radius: 50%;
+  background: var(--border2); flex-shrink: 0; margin-top: 6px;
+}
+.step-list li {
+  font-size: 13px; padding: 6px 0;
+  border-bottom: 1px solid var(--bg);
+  display: flex; gap: 9px; align-items: flex-start; line-height: 1.4;
+}
+.step-list li:last-child { border-bottom: none; }
+.step-num {
+  min-width: 20px; height: 20px; border-radius: 50%;
+  background: var(--accent-bg); color: var(--accent-text);
+  font-size: 11px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 1px;
+}
+.step-num.notaris { background: var(--amber-bg); color: var(--amber); }
+.step-num.dinas { background: var(--blue-bg); color: var(--blue); }
+.step-num.done { background: var(--accent-bg); color: var(--accent-text); }
+
+.note-box, .warn-box {
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 10px 14px; font-size: 13px; line-height: 1.6;
+  margin-top: 10px; display: flex; gap: 9px; align-items: flex-start;
+}
+.note-box { background: var(--blue-bg); color: var(--blue); border-left: 3px solid #3b82f6; }
+.warn-box { background: var(--amber-bg); color: var(--amber); border-left: 3px solid #f59e0b; }
+
+.cat-divider {
+  display: flex; align-items: center; gap: 10px;
+  margin: 44px 0 28px;
+}
+.cat-divider-line { flex: 1; height: 1px; background: var(--border); }
+.cat-divider-label {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .1em; background: var(--bg); padding: 0 10px;
+}
+
+.platform-row {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 9px 13px; margin-top: 10px; font-size: 13px;
+}
+.platform-row .plbl {
+  color: var(--text3); font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .04em; min-width: 56px;
+}
+.platform-row .pval { color: var(--text); font-weight: 600; font-family: 'DM Mono', monospace; font-size: 12px; flex: 1; }
+.platform-row .fee { margin-left: auto; }
+
+/* ===== MOBILE TOP NAV ===== */
+.mobile-header {
+  display: none;
+  position: sticky; top: 0; z-index: 150;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 16px;
+  align-items: center; gap: 10px;
+}
+.mobile-header h1 { font-size: 14px; font-weight: 700; color: var(--accent); flex: 1; }
+.menu-btn {
+  background: none; border: 1px solid var(--border);
+  border-radius: 8px; padding: 6px 10px;
+  font-size: 18px; cursor: pointer; color: var(--text);
+}
+
+/* MOBILE DRAWER */
+.drawer-overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,.4); z-index: 300;
+}
+.drawer-overlay.open { display: block; }
+.drawer {
+  position: fixed; left: 0; top: 0; bottom: 0;
+  width: 82%; max-width: 300px;
+  background: var(--surface);
+  z-index: 400; overflow-y: auto;
+  transform: translateX(-100%);
+  transition: transform .25s ease;
+  padding: 16px 0;
+}
+.drawer.open { transform: translateX(0); }
+.drawer-close {
+  display: flex; justify-content: flex-end; padding: 0 16px 12px;
+}
+.drawer-close button {
+  background: none; border: none; font-size: 22px; cursor: pointer; color: var(--text2);
+}
+.drawer .sidebar-logo { padding: 0 16px 14px; }
+.drawer .sidebar-search { padding: 6px 12px 10px; }
+.drawer .sidebar-cat { padding: 5px 16px; }
+.drawer .sidebar-item { padding: 8px 16px; font-size: 14px; }
+
+/* ===== MOBILE STYLES ===== */
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .mobile-header { display: flex; }
+  .hero { padding: 20px 16px 18px; }
+  .hero h2 { font-size: 18px; }
+  .hero p { font-size: 13px; }
+  .hero-stats { gap: 8px; }
+  .stat { padding: 8px 14px; }
+  .stat .num { font-size: 18px; }
+  .content { padding: 16px 16px 32px; }
+  .two-col { grid-template-columns: 1fr; }
+  .info-grid { grid-template-columns: 1fr 1fr; }
+  .service-title { font-size: 17px; }
+  .cat-divider { margin: 32px 0 20px; }
+  .service-section { margin-bottom: 40px; }
+  .platform-row { font-size: 12px; }
+  .platform-row .fee { margin-left: 0; width: 100%; margin-top: 4px; }
+  .col-card { padding: 13px 14px; }
+  .doc-list li, .step-list li { font-size: 13px; }
+}
+
+@media (max-width: 400px) {
+  .info-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="nav-progress" id="progress"></div>
+
+<!-- MOBILE HEADER -->
+<header class="mobile-header">
+  <h1>📋 SOP Legalitas Usaha</h1>
+  <button class="menu-btn" onclick="openDrawer()">☰</button>
+</header>
+
+<!-- MOBILE DRAWER -->
+<div class="drawer-overlay" id="overlay" onclick="closeDrawer()"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-close"><button onclick="closeDrawer()">✕</button></div>
+  <div class="sidebar-logo">
+    <h1>SOP Legalitas Usaha Indonesia</h1>
+    <p>Panduan lengkap untuk konsultan</p>
+  </div>
+  <div class="sidebar-search">
+    <input type="text" id="drawerSearch" placeholder="Cari layanan..." oninput="filterSidebar(this.value, 'drawer')">
+  </div>
+  <div id="drawerNav"></div>
+</div>
+
+<!-- DESKTOP LAYOUT -->
+<div class="layout">
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <h1>SOP Legalitas<br>Usaha Indonesia</h1>
+      <p>Panduan lengkap untuk konsultan</p>
+    </div>
+    <div class="sidebar-search">
+      <input type="text" id="sideSearch" placeholder="Cari layanan..." oninput="filterSidebar(this.value, 'side')">
+    </div>
+    <div id="sideNav"></div>
+  </nav>
+
+  <main class="main">
+    <div class="hero">
+      <h2>Panduan SOP Jasa Legalitas Usaha</h2>
+      <p>Referensi lengkap alur proses, checklist dokumen, platform pengajuan, dan catatan penting untuk 19 layanan legalitas usaha di Indonesia.</p>
+      <div class="hero-stats">
+        <div class="stat"><div class="num">19</div><div class="lbl">Layanan</div></div>
+        <div class="stat"><div class="num">7</div><div class="lbl">Kategori</div></div>
+        <div class="stat"><div class="num">8</div><div class="lbl">Platform gov</div></div>
+        <div class="stat"><div class="num">200+</div><div class="lbl">Poin checklist</div></div>
+      </div>
+    </div>
+    <div class="content" id="mainContent"></div>
+  </main>
+</div>
+
+<script>
+const SERVICES = [
+  { id:'pt-perorangan', cat:'Badan Usaha', catColor:'#1D9E75', icon:'🏪', iconBg:'#e8f5ee',
+    title:'PT Perorangan',
+    sub:'Perseroan Terbatas untuk usaha mikro/kecil, 1 pendiri WNI',
+    badges:[{t:'Tanpa notaris',c:'b-green'},{t:'1–3 hari kerja',c:'b-blue'},{t:'PNBP Rp 50rb',c:'b-amber'},{t:'PP No. 8/2021',c:'b-gray'}],
+    info:[{l:'Dasar hukum',v:'PP No. 8/2021'},{l:'Min. pendiri',v:'1 WNI'},{l:'Waktu proses',v:'1–3 hari'},{l:'Modal maks',v:'Rp 5 Miliar'},{l:'Butuh notaris',v:'Tidak perlu'},{l:'Output',v:'Sertifikat PT + NIB'}],
+    docs:['KTP pendiri (asli + fotokopi yang masih berlaku)','NPWP pribadi pendiri','Email aktif pendiri','Nomor HP aktif pendiri','3 pilihan nama PT (urutan prioritas)','Alamat lengkap domisili usaha','KBLI / bidang usaha yang dijalankan'],
+    steps:[{t:'Cek ketersediaan nama PT di AHU Online',p:'client'},{t:'Isi formulir pendirian Perseroan Perorangan di AHU',p:'client'},{t:'Bayar PNBP Rp 50.000 via kode billing AHU',p:'client'},{t:'Unduh Sertifikat Perseroan Perorangan',p:'done'},{t:'Login OSS → daftar NIB dengan KBLI yang sesuai',p:'client'},{t:'Unduh NIB dan kirim paket dokumen ke klien',p:'done'}],
+    note:'PT Perorangan hanya bisa dimiliki 1 pemegang saham WNI. Jika ingin menambah investor di kemudian hari, harus konversi ke PT biasa yang memerlukan notaris.',
+    platform:'ahu.go.id + oss.go.id', fee:'Rp 50.000 (PNBP)' },
+
+  { id:'cv', cat:'Badan Usaha', catColor:'#1D9E75', icon:'👥', iconBg:'#eeedfe',
+    title:'CV (Commanditaire Vennootschap)',
+    sub:'Persekutuan komanditer, minimal 2 orang pendiri',
+    badges:[{t:'Wajib notaris',c:'b-amber'},{t:'3–7 hari kerja',c:'b-blue'},{t:'KUHD + Permenkumham',c:'b-gray'}],
+    info:[{l:'Dasar hukum',v:'KUHD + Permenkumham'},{l:'Min. pendiri',v:'2 orang'},{l:'Waktu proses',v:'3–7 hari'},{l:'Notaris',v:'Wajib'},{l:'Output',v:'SK CV + NIB'}],
+    docs:['KTP sekutu aktif (asli + fotokopi)','KTP sekutu pasif (asli + fotokopi)','NPWP pribadi sekutu aktif','NPWP pribadi sekutu pasif','Email & HP kedua sekutu','3 pilihan nama CV','Alamat lengkap domisili usaha','KBLI / bidang usaha','Besaran modal sekutu aktif & pasif'],
+    steps:[{t:'Cek ketersediaan nama CV di AHU Online',p:'client'},{t:'Koordinasi dokumen dengan notaris mitra',p:'client'},{t:'Notaris buat draft akta pendirian CV',p:'notaris'},{t:'Kedua sekutu tanda tangan akta di hadapan notaris',p:'notaris'},{t:'Notaris daftarkan CV di sistem AHU Online',p:'notaris'},{t:'Terima SK Pendaftaran CV dari notaris',p:'done'},{t:'Login OSS → daftar NIB',p:'client'},{t:'Kirim paket dokumen lengkap ke klien',p:'done'}],
+    warn:'Sejak 2021 CV wajib didaftarkan ke AHU (sebelumnya cukup ke Pengadilan Negeri). Pastikan notaris mitra sudah aktif dan familiar dengan sistem AHU terbaru.',
+    platform:'ahu.go.id + oss.go.id', fee:'Biaya notaris + PNBP' },
+
+  { id:'pt-biasa', cat:'Badan Usaha', catColor:'#1D9E75', icon:'🏢', iconBg:'#eeedfe',
+    title:'PT (Perseroan Terbatas)',
+    sub:'Badan hukum untuk usaha menengah-besar, minimal 2 pendiri',
+    badges:[{t:'Wajib notaris',c:'b-amber'},{t:'7–14 hari kerja',c:'b-blue'},{t:'UU No. 40/2007',c:'b-gray'}],
+    info:[{l:'Dasar hukum',v:'UU No. 40/2007'},{l:'Min. pendiri',v:'2 orang/badan'},{l:'Waktu proses',v:'7–14 hari'},{l:'Modal min.',v:'Rp 50 Juta'},{l:'Notaris',v:'Wajib'},{l:'Output',v:'SK Kemenkumham + NIB'}],
+    docs:['KTP & NPWP semua pendiri, direksi, komisaris','Akta pendirian dari notaris','Bukti kepemilikan/sewa domisili (SKDP)','Struktur permodalan (modal dasar & disetor)','KBLI bidang usaha','Data lengkap direksi & komisaris'],
+    steps:[{t:'Konsultasi struktur PT dengan notaris',p:'notaris'},{t:'Notaris susun dan buat akta pendirian PT',p:'notaris'},{t:'Pengajuan pengesahan ke Kemenkumham via AHU',p:'notaris'},{t:'Terima SK Pengesahan Badan Hukum PT',p:'done'},{t:'Daftar NIB di OSS',p:'client'},{t:'Daftar NPWP badan usaha di DJP Online',p:'client'},{t:'Buka rekening bank atas nama PT',p:'client'}],
+    note:'PT memerlukan minimal 2 organ: Direksi dan Komisaris. Satu orang bisa merangkap keduanya hanya dalam kondisi tertentu sesuai UU.',
+    platform:'ahu.go.id + oss.go.id + djponline.pajak.go.id', fee:'Biaya notaris + PNBP AHU' },
+
+  { id:'yayasan', cat:'Badan Usaha', catColor:'#1D9E75', icon:'🤝', iconBg:'#e8f5ee',
+    title:'Yayasan',
+    sub:'Badan hukum nirlaba untuk sosial, keagamaan, kemanusiaan',
+    badges:[{t:'Wajib notaris',c:'b-amber'},{t:'14–21 hari kerja',c:'b-blue'},{t:'Nirlaba',c:'b-coral'}],
+    info:[{l:'Dasar hukum',v:'UU No. 16/2001 jo. 28/2004'},{l:'Min. organ',v:'Pembina, Pengurus, Pengawas'},{l:'Waktu proses',v:'14–21 hari'},{l:'Modal awal min.',v:'Rp 10 Juta (WNI)'},{l:'Sifat',v:'Nirlaba'},{l:'Pengesahan',v:'Kemenkumham'}],
+    docs:['KTP semua organ (pembina, pengurus, pengawas)','NPWP pribadi pengurus','Bukti kekayaan awal yayasan (min Rp 10 juta)','Nama dan tujuan yayasan','Alamat domisili yayasan','Surat pernyataan pemisahan kekayaan','Surat pernyataan tidak sedang dalam sengketa'],
+    steps:[{t:'Susun struktur organ yayasan bersama klien',p:'client'},{t:'Notaris buat akta pendirian yayasan',p:'notaris'},{t:'Pengajuan pengesahan ke Kemenkumham via AHU',p:'notaris'},{t:'Terima SK Pengesahan Yayasan',p:'done'},{t:'Daftar NPWP yayasan di DJP Online',p:'client'},{t:'Daftar NIB di OSS (jika ada kegiatan usaha)',p:'client'},{t:'Buka rekening bank atas nama yayasan',p:'client'}],
+    warn:'Yayasan tidak boleh membagi kekayaan kepada pendiri/organ. Semua aset hanya untuk tujuan yayasan. Pelanggaran bisa menyebabkan pembubaran paksa.',
+    platform:'ahu.go.id + kemenkumham.go.id', fee:'Biaya notaris + PNBP' },
+
+  { id:'koperasi', cat:'Badan Usaha', catColor:'#1D9E75', icon:'⭐', iconBg:'#e8f5ee',
+    title:'Koperasi',
+    sub:'Badan usaha berasas kekeluargaan, milik dan oleh anggota',
+    badges:[{t:'Wajib notaris',c:'b-amber'},{t:'Min. 20 anggota',c:'b-purple'},{t:'14–30 hari',c:'b-blue'}],
+    info:[{l:'Dasar hukum',v:'UU No. 25/1992'},{l:'Min. anggota',v:'20 orang'},{l:'Waktu proses',v:'14–30 hari'},{l:'Notaris',v:'Wajib'},{l:'Pengawas',v:'Kemenkop/Dinas'},{l:'Output',v:'SK Badan Hukum + NIB'}],
+    docs:['KTP semua anggota pendiri (min. 20 orang)','NPWP pribadi semua anggota pendiri','Surat pernyataan kesanggupan jadi anggota (bermaterai, tiap orang)','Notulen rapat pembentukan (ditandatangani semua peserta)','Daftar hadir rapat pembentukan (tanda tangan asli)','Akta pendirian koperasi dari notaris','Anggaran Dasar (AD) yang disahkan dalam rapat','Anggaran Rumah Tangga (ART) yang disahkan dalam rapat','Bukti setoran simpanan pokok semua anggota','Rencana kegiatan usaha koperasi (minimal 1 tahun)','Rencana anggaran pendapatan & belanja (RAPB)','Bukti kepemilikan/sewa domisili koperasi','Foto kantor/sekretariat koperasi (tampak depan dan dalam)'],
+    steps:[{t:'Konsultasi: tentukan jenis koperasi & wilayah operasional',p:'client'},{t:'Kumpulkan & verifikasi dokumen min. 20 anggota pendiri',p:'client'},{t:'Susun draft AD/ART bersama notaris mitra',p:'notaris'},{t:'Gelar rapat pembentukan koperasi (dihadiri min. 20 orang)',p:'client'},{t:'Susun notulen rapat & daftar hadir lengkap',p:'client'},{t:'Tanda tangan akta pendirian di hadapan notaris',p:'notaris'},{t:'Submit pengajuan ke Dinas Koperasi / Kemenkop via sisminbhkop',p:'dinas'},{t:'Verifikasi & evaluasi oleh pejabat koperasi (7–14 hari)',p:'dinas'},{t:'Terima SK Pengesahan Badan Hukum Koperasi',p:'done'},{t:'Daftar NIB di OSS',p:'client'},{t:'Daftar NPWP badan koperasi di DJP Online',p:'client'},{t:'Kirim paket dokumen lengkap ke klien',p:'done'}],
+    warn:'Koperasi yang tidak melaksanakan RAT selama 2 tahun berturut-turut dapat dibubarkan. Pastikan klien paham kewajiban RAT tahunan.',
+    platform:'sisminbhkop.kemenkopukm.go.id + oss.go.id', fee:'Biaya notaris + Dinas Koperasi' },
+
+  { id:'nib', cat:'Perizinan OSS', catColor:'#3B6D11', icon:'🪪', iconBg:'#eaf3de',
+    title:'NIB (Nomor Induk Berusaha)',
+    sub:'Identitas tunggal pelaku usaha, wajib untuk semua jenis usaha',
+    badges:[{t:'GRATIS',c:'b-green'},{t:'1 hari kerja',c:'b-blue'},{t:'Wajib semua usaha',c:'b-amber'}],
+    info:[{l:'Dasar hukum',v:'PP No. 5/2021'},{l:'Biaya',v:'Gratis'},{l:'Waktu',v:'1 hari kerja'},{l:'Berlaku',v:'Seumur hidup'},{l:'Fungsi',v:'ID usaha, tanda daftar'},{l:'Pengganti',v:'TDP, SIUP lama'}],
+    docs:['KTP penanggung jawab usaha','NPWP pribadi (jika perorangan) atau NPWP badan','Email aktif untuk verifikasi','Nomor HP aktif','Data badan usaha (akta/SK jika sudah ada)','KBLI kegiatan usaha (bisa lebih dari 1)','Alamat usaha lengkap'],
+    steps:[{t:'Buat/login akun OSS di oss.go.id',p:'client'},{t:'Pilih jenis pelaku usaha: perorangan atau badan usaha',p:'client'},{t:'Isi data usaha dan pilih KBLI yang sesuai',p:'client'},{t:'Verifikasi data dan submit permohonan',p:'client'},{t:'NIB langsung terbit otomatis',p:'done'},{t:'Download NIB dan simpan arsip digital',p:'done'}],
+    note:'NIB menggantikan TDP, API, dan Angka Pengenal Importir. Hampir semua layanan legalitas lainnya membutuhkan NIB sebagai prasyarat.',
+    platform:'oss.go.id', fee:'GRATIS' },
+
+  { id:'sertifikat-standar', cat:'Perizinan OSS', catColor:'#3B6D11', icon:'📋', iconBg:'#eaf3de',
+    title:'Sertifikat Standar',
+    sub:'Izin operasional usaha menengah-tinggi risiko setelah NIB',
+    badges:[{t:'Risiko menengah-tinggi',c:'b-amber'},{t:'7–30 hari',c:'b-blue'},{t:'Verifikasi K/L',c:'b-gray'}],
+    info:[{l:'Dasar hukum',v:'PP No. 5/2021'},{l:'Risiko',v:'Menengah Tinggi'},{l:'Waktu',v:'7–30 hari'},{l:'Verifikasi',v:'K/L/Pemda terkait'},{l:'Syarat',v:'NIB aktif'}],
+    docs:['NIB yang sudah aktif di OSS','Dokumen teknis sesuai bidang usaha','Surat pernyataan pemenuhan standar','Bukti kepemilikan/sewa lokasi usaha','Izin lingkungan (jika diperlukan)','Dokumen spesifik sesuai KBLI masing-masing'],
+    steps:[{t:'Pastikan NIB sudah aktif di sistem OSS',p:'client'},{t:'Akses menu Perizinan Berusaha di OSS',p:'client'},{t:'Pilih KBLI dan periksa daftar persyaratan yang muncul',p:'client'},{t:'Upload semua dokumen persyaratan',p:'client'},{t:'Proses verifikasi oleh K/L atau Pemda teknis terkait',p:'dinas'},{t:'Terima Sertifikat Standar yang sudah diverifikasi',p:'done'}],
+    warn:'Persyaratan berbeda-beda tergantung KBLI. Selalu cek persyaratan spesifik di OSS sebelum mengumpulkan dokumen klien.',
+    platform:'oss.go.id', fee:'Bervariasi per jenis KBLI' },
+
+  { id:'izin-khusus', cat:'Perizinan OSS', catColor:'#3B6D11', icon:'🔏', iconBg:'#eaf3de',
+    title:'Izin Khusus (Risiko Tinggi)',
+    sub:'SIUJK, izin industri, izin pangan, SIPI, dan izin sektor khusus lainnya',
+    badges:[{t:'Risiko tinggi',c:'b-coral'},{t:'30–90+ hari',c:'b-blue'},{t:'K/L teknis',c:'b-gray'}],
+    info:[{l:'Dasar hukum',v:'PP No. 5/2021'},{l:'Risiko',v:'Tinggi'},{l:'Waktu',v:'30–90+ hari'},{l:'Pembaruan',v:'Periodik'},{l:'Pengawasan',v:'K/L teknis terkait'}],
+    docs:['NIB + Sertifikat Standar (jika relevan)','Dokumen teknis khusus per jenis izin','Laporan hasil uji laboratorium/audit','Izin lingkungan (AMDAL/UKL-UPL)','Tenaga ahli bersertifikat (untuk bidang tertentu)','Bukti kepemilikan/sewa fasilitas produksi'],
+    steps:[{t:'Identifikasi jenis izin khusus yang dibutuhkan klien',p:'client'},{t:'Konsultasi ke instansi teknis terkait',p:'client'},{t:'Persiapkan dokumen teknis spesifik',p:'client'},{t:'Ajukan permohonan via OSS atau langsung ke K/L',p:'client'},{t:'Proses verifikasi + kemungkinan survei lapangan',p:'dinas'},{t:'Terima izin khusus yang diterbitkan',p:'done'},{t:'Catat masa berlaku dan jadwal pembaruan',p:'client'}],
+    note:'Contoh: SIUJK (konstruksi), IUI (industri), izin farmasi/BPOM, izin tambang, SIPB (perbankan). Setiap sektor punya persyaratan unik.',
+    platform:'oss.go.id + instansi K/L terkait', fee:'Bervariasi per jenis izin' },
+
+  { id:'haki-merek', cat:'HaKI & Sertifikasi', catColor:'#854F0B', icon:'™️', iconBg:'#faeeda',
+    title:'Pendaftaran Merek (HaKI)',
+    sub:'Perlindungan hukum untuk nama, logo, dan identitas merek dagang',
+    badges:[{t:'12–18 bulan proses',c:'b-amber'},{t:'Berlaku 10 tahun',c:'b-purple'},{t:'DJKI',c:'b-gray'}],
+    info:[{l:'Dasar hukum',v:'UU No. 20/2016'},{l:'Masa berlaku',v:'10 tahun (dapat diperpanjang)'},{l:'Waktu proses',v:'12–18 bulan'},{l:'Kelas',v:'Kelas 1–45 (Nice Classification)'},{l:'PNBP UMK',v:'Rp 1.800.000/kelas'},{l:'PNBP umum',v:'Rp 3.600.000/kelas'}],
+    docs:['KTP atau paspor pemohon','NPWP pemohon','Etiket/label merek (file JPG/PNG resolusi tinggi)','Deskripsi elemen merek (warna, arti, dll.)','Daftar produk/jasa yang akan dilindungi','Surat kuasa (jika melalui konsultan HaKI)','Bukti UMK (jika ingin tarif PNBP UMK)'],
+    steps:[{t:'Tentukan kelas merek yang sesuai (Nice Classification 1–45)',p:'client'},{t:'Lakukan pencarian merek di PDKI Indonesia (pdki.dgip.go.id)',p:'client'},{t:'Buat akun pemohon di dgip.go.id',p:'client'},{t:'Isi formulir permohonan merek online',p:'client'},{t:'Upload etiket merek dan dokumen pendukung',p:'client'},{t:'Bayar PNBP (Rp 1,8 juta/kelas untuk UMK)',p:'client'},{t:'Pemeriksaan formalitas oleh DJKI (15 hari kerja)',p:'dinas'},{t:'Pengumuman merek di Berita Resmi Merek (2 bulan)',p:'dinas'},{t:'Pemeriksaan substantif oleh DJKI',p:'dinas'},{t:'Terima sertifikat merek terdaftar',p:'done'}],
+    warn:'SELALU cek di PDKI (pdki.dgip.go.id) sebelum daftar. Merek yang sama atau mirip dengan merek terdaftar AKAN DITOLAK dan biaya PNBP tidak dikembalikan.',
+    platform:'dgip.go.id + pdki.dgip.go.id', fee:'Rp 1.800.000/kelas (UMK) | Rp 3.600.000/kelas (umum)' },
+
+  { id:'hak-cipta', cat:'HaKI & Sertifikasi', catColor:'#854F0B', icon:'©️', iconBg:'#faeeda',
+    title:'Hak Cipta',
+    sub:'Perlindungan karya seni, tulisan, software, musik, dan karya kreatif',
+    badges:[{t:'1–3 hari kerja',c:'b-green'},{t:'Seumur hidup +70 thn',c:'b-purple'},{t:'DJKI',c:'b-gray'}],
+    info:[{l:'Dasar hukum',v:'UU No. 28/2014'},{l:'Masa berlaku',v:'Seumur hidup + 70 tahun'},{l:'Waktu proses',v:'1–3 hari kerja'},{l:'PNBP',v:'Rp 200.000–Rp 800.000'},{l:'Sifat',v:'Lahir otomatis saat diciptakan'}],
+    docs:['KTP atau NPWP pencipta','Sampel/contoh karya (file digital)','Uraian singkat tentang karya','Surat pernyataan kepemilikan karya','Surat kuasa (jika melalui konsultan)'],
+    steps:[{t:'Buat akun di e-hakcipta.dgip.go.id',p:'client'},{t:'Isi data pencipta dan pemegang hak cipta',p:'client'},{t:'Upload sampel karya sesuai format yang diminta',p:'client'},{t:'Isi uraian, kategori, dan tahun penciptaan karya',p:'client'},{t:'Bayar PNBP (Rp 200.000–Rp 800.000)',p:'client'},{t:'Terima sertifikat hak cipta',p:'done'}],
+    note:'Hak cipta lahir otomatis saat karya diciptakan. Namun pendaftaran memberikan bukti hukum yang jauh lebih kuat jika terjadi sengketa di kemudian hari.',
+    platform:'e-hakcipta.dgip.go.id', fee:'Rp 200.000 – Rp 800.000' },
+
+  { id:'paten', cat:'HaKI & Sertifikasi', catColor:'#854F0B', icon:'💡', iconBg:'#faeeda',
+    title:'Paten & Paten Sederhana',
+    sub:'Perlindungan invensi/inovasi teknis dari penyalahgunaan pihak lain',
+    badges:[{t:'Paten: 2–3 tahun proses',c:'b-amber'},{t:'Paten sederhana: 6–12 bln',c:'b-blue'},{t:'DJKI',c:'b-gray'}],
+    info:[{l:'Dasar hukum',v:'UU No. 13/2016'},{l:'Paten umum',v:'20 tahun'},{l:'Paten sederhana',v:'10 tahun'},{l:'PNBP paten umum',v:'Rp 1.250.000'},{l:'PNBP paten sederhana',v:'Rp 750.000'}],
+    docs:['Deskripsi invensi lengkap (bahasa teknis)','Klaim paten (apa yang dilindungi)','Abstrak invensi','Gambar/diagram teknis (jika ada)','KTP dan NPWP inventor','Surat pengalihan hak (jika inventor bukan pemohon)'],
+    steps:[{t:'Cek kebaruan invensi di database paten internasional',p:'client'},{t:'Buat dokumen deskripsi, klaim, dan abstrak paten',p:'client'},{t:'Daftar di dgip.go.id dan upload dokumen',p:'client'},{t:'Bayar PNBP sesuai jenis paten',p:'client'},{t:'Pemeriksaan formalitas oleh DJKI',p:'dinas'},{t:'Pengumuman 18 bulan (paten umum) / 3 bulan (sederhana)',p:'dinas'},{t:'Pemeriksaan substantif',p:'dinas'},{t:'Terima sertifikat paten',p:'done'}],
+    note:'Untuk UMKM, paten sederhana lebih cocok: lebih cepat, lebih murah, dan cocok untuk inovasi produk praktis seperti alat, kemasan, atau proses sederhana.',
+    platform:'dgip.go.id', fee:'Rp 750.000 (sederhana) | Rp 1.250.000 (umum)' },
+
+  { id:'halal', cat:'HaKI & Sertifikasi', catColor:'#854F0B', icon:'☪️', iconBg:'#e1f5ee',
+    title:'Sertifikat Halal',
+    sub:'Jaminan kehalalan produk: makanan, minuman, kosmetik, obat-obatan',
+    badges:[{t:'BPJPH Kemenag',c:'b-green'},{t:'Self-declare: 3 HK',c:'b-blue'},{t:'Berlaku 4 tahun',c:'b-purple'},{t:'Wajib sejak 2024',c:'b-amber'}],
+    info:[{l:'Dasar hukum',v:'UU No. 33/2014'},{l:'Pelaksana',v:'BPJPH Kemenag'},{l:'Self-declare UMK',v:'Gratis + 3 hari'},{l:'Reguler',v:'7–21 hari kerja'},{l:'Masa berlaku',v:'4 tahun'},{l:'Wajib',v:'Makanan & minuman sejak 2024'}],
+    docs:['NIB pelaku usaha aktif','Nama dan jenis produk lengkap','Daftar bahan baku & bahan penolong','Dokumen alur proses produksi','Sertifikat halal bahan baku (jika tersedia)','Foto sarana dan fasilitas produksi','Surat pernyataan kehalalan bahan dan proses'],
+    steps:[{t:'Daftar akun di ptsp.halal.go.id',p:'client'},{t:'Pilih jalur: self-declare (UMK) atau reguler',p:'client'},{t:'Lengkapi data produk, bahan baku, dan proses produksi',p:'client'},{t:'Untuk reguler: tentukan Lembaga Pemeriksa Halal (LPH)',p:'client'},{t:'Pemeriksaan dan pengujian oleh LPH (untuk reguler)',p:'dinas'},{t:'Sidang fatwa penetapan kehalalan oleh MUI',p:'dinas'},{t:'BPJPH terbitkan sertifikat halal',p:'done'}],
+    note:'Self-declare GRATIS untuk UMK dengan produk sederhana. Wajib didampingi Pendamping Proses Produk Halal (P3H) yang terdaftar di BPJPH.',
+    platform:'ptsp.halal.go.id', fee:'Self-declare: Gratis (UMK) | Reguler: Rp 300.000–Rp 5.000.000' },
+
+  { id:'npwp-badan', cat:'Pajak & Keuangan', catColor:'#712B13', icon:'🧾', iconBg:'#faece7',
+    title:'NPWP Badan Usaha',
+    sub:'Nomor Pokok Wajib Pajak untuk badan usaha',
+    badges:[{t:'GRATIS',c:'b-green'},{t:'1–3 hari kerja',c:'b-blue'},{t:'DJP Online',c:'b-gray'}],
+    info:[{l:'Dasar hukum',v:'UU KUP'},{l:'Biaya',v:'Gratis'},{l:'Waktu',v:'1–3 hari'},{l:'Berlaku',v:'Selama badan aktif'},{l:'Wajib',v:'Semua badan usaha'}],
+    docs:['Akta pendirian / SK pengesahan badan usaha','KTP dan NPWP pribadi pengurus/direksi','Bukti domisili usaha (sewa/milik)','NIB (jika sudah terbit)','SKDP dari kelurahan (jika diminta KPP)'],
+    steps:[{t:'Siapkan seluruh dokumen pendirian badan usaha',p:'client'},{t:'Daftar online di ereg.pajak.go.id',p:'client'},{t:'Isi formulir pendaftaran NPWP badan',p:'client'},{t:'Upload dokumen persyaratan',p:'client'},{t:'Verifikasi oleh KPP setempat (bisa ada survei)',p:'dinas'},{t:'Terima NPWP badan dalam bentuk elektronik',p:'done'}],
+    note:'NPWP badan berbeda dengan NPWP pribadi pengurus. Keduanya harus ada. NPWP badan diperlukan untuk buka rekening perusahaan, tender, dan kontrak dengan instansi pemerintah.',
+    platform:'ereg.pajak.go.id', fee:'GRATIS' },
+
+  { id:'pkp', cat:'Pajak & Keuangan', catColor:'#712B13', icon:'📄', iconBg:'#faece7',
+    title:'PKP (Pengusaha Kena Pajak)',
+    sub:'Registrasi PKP untuk penerbitan faktur pajak PPN',
+    badges:[{t:'Omzet >Rp 4,8M/thn',c:'b-amber'},{t:'1–5 hari kerja',c:'b-blue'},{t:'DJP',c:'b-gray'}],
+    info:[{l:'Dasar hukum',v:'UU PPN No. 42/2009'},{l:'Ambang batas',v:'Omzet > Rp 4,8 Miliar/tahun'},{l:'Waktu',v:'1–5 hari'},{l:'Kewajiban',v:'Lapor SPT Masa PPN tiap bulan'},{l:'Denda telat lapor',v:'Rp 500.000/bulan'}],
+    docs:['NPWP badan/perorangan aktif','Akta pendirian badan usaha','KTP pengurus perusahaan','Bukti omzet (laporan keuangan/rekening koran)','Bukti domisili usaha','NIB aktif'],
+    steps:[{t:'Pastikan NPWP badan sudah aktif',p:'client'},{t:'Ajukan permohonan PKP ke KPP domisili',p:'client'},{t:'Survei lapangan oleh petugas KPP',p:'dinas'},{t:'Aktivasi akun e-faktur di efaktur.pajak.go.id',p:'client'},{t:'Terima SPPKP (Surat Pengukuhan PKP)',p:'done'},{t:'Mulai terbitkan faktur pajak untuk setiap transaksi',p:'done'}],
+    warn:'PKP wajib melaporkan SPT Masa PPN setiap bulan meski nihil transaksi. Denda keterlambatan Rp 500.000 per bulan. Pastikan klien siap dengan kewajiban ini.',
+    platform:'efaktur.pajak.go.id + KPP setempat', fee:'GRATIS' },
+
+  { id:'skdp', cat:'Perizinan Lain', catColor:'#5F5E5A', icon:'📍', iconBg:'#f1efe8',
+    title:'SKDP / Domisili Usaha',
+    sub:'Surat keterangan domisili perusahaan dari kelurahan/kecamatan',
+    badges:[{t:'Kelurahan/Kecamatan',c:'b-gray'},{t:'1–3 hari kerja',c:'b-blue'},{t:'Biasanya gratis',c:'b-green'}],
+    info:[{l:'Penerbit',v:'Kelurahan/Kecamatan'},{l:'Waktu',v:'1–3 hari'},{l:'Biaya',v:'Umumnya gratis'},{l:'Catatan',v:'Tidak semua daerah wajib'}],
+    docs:['KTP pengurus/pemilik usaha','Akta pendirian atau SK badan usaha','Bukti kepemilikan/sewa tempat usaha','Foto lokasi usaha (kadang diminta)'],
+    steps:[{t:'Datang langsung ke kantor kelurahan setempat',p:'client'},{t:'Isi formulir permohonan surat domisili',p:'client'},{t:'Lampirkan dokumen persyaratan',p:'client'},{t:'Tunggu proses penerbitan (biasanya 1–2 hari)',p:'dinas'},{t:'Gunakan sebagai lampiran NPWP badan atau izin lain',p:'done'}],
+    note:'Beberapa KPP dan bank masih meminta SKDP saat pembukaan rekening perusahaan. Hubungi kelurahan setempat untuk persyaratan spesifik di daerah tersebut.',
+    platform:'Kantor Kelurahan/Kecamatan setempat', fee:'Umumnya GRATIS' },
+
+  { id:'bpjs', cat:'Ketenagakerjaan', catColor:'#085041', icon:'🛡️', iconBg:'#e1f5ee',
+    title:'BPJS Ketenagakerjaan & Kesehatan',
+    sub:'Pendaftaran perusahaan dan karyawan sebagai peserta BPJS',
+    badges:[{t:'Wajib jika ada karyawan',c:'b-amber'},{t:'1–3 hari',c:'b-blue'},{t:'UU No. 24/2011',c:'b-gray'}],
+    info:[{l:'Dasar hukum',v:'UU No. 24/2011'},{l:'BPJS TK perusahaan',v:'~4,24% dari gaji'},{l:'BPJS TK karyawan',v:'~3% dari gaji'},{l:'BPJS Kes perusahaan',v:'4% dari gaji'},{l:'BPJS Kes karyawan',v:'1% dari gaji'},{l:'Denda telat',v:'2% per bulan'}],
+    docs:['NPWP badan usaha','Akta pendirian & NIB','KTP semua karyawan yang akan didaftarkan','Data gaji/upah semua karyawan','Surat pengangkatan karyawan (jika ada)'],
+    steps:[{t:'Daftar badan usaha di bpjsketenagakerjaan.go.id',p:'client'},{t:'Input data semua tenaga kerja yang akan didaftarkan',p:'client'},{t:'Bayar iuran pertama',p:'client'},{t:'Terima kartu BPJS TK untuk setiap karyawan',p:'done'},{t:'Daftar BPJS Kesehatan di bpjs-kesehatan.go.id',p:'client'},{t:'Bayar iuran BPJS Kesehatan rutin tiap bulan',p:'done'}],
+    warn:'Perusahaan yang tidak mendaftarkan karyawan ke BPJS dapat dikenai sanksi administratif hingga pencabutan izin usaha.',
+    platform:'bpjsketenagakerjaan.go.id + bpjs-kesehatan.go.id', fee:'Iuran bulanan (% dari gaji)' },
+
+  { id:'iso', cat:'Sertifikasi Mutu', catColor:'#791F1F', icon:'🏅', iconBg:'#fcebeb',
+    title:'Sertifikasi ISO',
+    sub:'ISO 9001 (mutu), ISO 22000 (pangan), ISO 14001 (lingkungan), ISO 27001 (data)',
+    badges:[{t:'Lembaga terakreditasi KAN',c:'b-gray'},{t:'3–6 bulan',c:'b-amber'},{t:'3 tahun + audit tahunan',c:'b-purple'}],
+    info:[{l:'Jenis umum',v:'ISO 9001, 22000, 14001, 27001'},{l:'Penerbit',v:'LSS terakreditasi KAN'},{l:'Waktu',v:'3–6 bulan'},{l:'Berlaku',v:'3 tahun (audit tahunan)'},{l:'Biaya estimasi',v:'Rp 15–50 juta'}],
+    docs:['Struktur organisasi perusahaan','Dokumentasi sistem manajemen mutu','Prosedur Operasional Standar (SOP) internal','Rekaman/bukti implementasi sistem','Hasil laporan audit internal','Notulen tinjauan manajemen'],
+    steps:[{t:'Tentukan jenis ISO yang sesuai bidang usaha klien',p:'client'},{t:'Gap analysis: kondisi saat ini vs standar ISO',p:'client'},{t:'Implementasi sistem manajemen sesuai standar ISO',p:'client'},{t:'Lakukan audit internal',p:'client'},{t:'Pilih lembaga sertifikasi terakreditasi KAN',p:'client'},{t:'Audit sertifikasi tahap 1 (review dokumen)',p:'dinas'},{t:'Audit sertifikasi tahap 2 (audit lapangan)',p:'dinas'},{t:'Terima sertifikat ISO',p:'done'},{t:'Jadwalkan audit surveillance tahunan',p:'client'}],
+    note:'ISO diterbitkan oleh lembaga sertifikasi swasta terakreditasi KAN. Pilih lembaga yang punya akreditasi IAF agar diakui secara internasional.',
+    platform:'Lembaga sertifikasi terakreditasi KAN', fee:'Rp 15.000.000 – Rp 50.000.000' },
+
+  { id:'sni', cat:'Sertifikasi Mutu', catColor:'#791F1F', icon:'🎖️', iconBg:'#fcebeb',
+    title:'SNI (Standar Nasional Indonesia)',
+    sub:'Sertifikasi produk sesuai standar mutu nasional wajib/sukarela',
+    badges:[{t:'BSN + LSPro KAN',c:'b-gray'},{t:'1–6 bulan',c:'b-amber'},{t:'SNI wajib utk bbrp produk',c:'b-coral'}],
+    info:[{l:'Dasar hukum',v:'PP No. 34/2018'},{l:'Pelaksana',v:'BSN + LSPro terakreditasi'},{l:'Waktu',v:'1–6 bulan'},{l:'Jenis',v:'SNI wajib & SNI sukarela'},{l:'Biaya estimasi',v:'Rp 5–30 juta'}],
+    docs:['Data produk lengkap (spesifikasi teknis)','Hasil uji dari laboratorium terakreditasi BSN','Manual mutu & prosedur produksi','Sertifikat sistem manajemen mutu (jika ada)','Data pemasok bahan baku utama'],
+    steps:[{t:'Cek apakah produk klien masuk daftar SNI wajib di bsn.go.id',p:'client'},{t:'Siapkan sampel produk untuk pengujian laboratorium',p:'client'},{t:'Kirim sampel ke laboratorium terakreditasi BSN',p:'client'},{t:'Pilih Lembaga Sertifikasi Produk (LSPro) terakreditasi',p:'client'},{t:'Audit proses produksi oleh LSPro',p:'dinas'},{t:'Evaluasi hasil uji + audit lapangan',p:'dinas'},{t:'Terima SPPT SNI',p:'done'},{t:'Pasang tanda SNI pada produk sesuai ketentuan',p:'done'}],
+    warn:'Produk yang masuk daftar SNI wajib TIDAK BOLEH beredar di pasar Indonesia tanpa sertifikat SNI. Cek daftar SNI wajib terbaru di bsn.go.id.',
+    platform:'bsn.go.id + LSPro terakreditasi KAN', fee:'Rp 5.000.000 – Rp 30.000.000' },
+];
+
+const CATS = [...new Set(SERVICES.map(s => s.cat))];
+const catColors = {};
+SERVICES.forEach(s => { catColors[s.cat] = s.catColor; });
+
+function sc(p) {
+  if (p === 'notaris') return 'notaris';
+  if (p === 'dinas') return 'dinas';
+  if (p === 'done') return 'done';
+  return '';
+}
+
+function buildNavHTML(idPrefix) {
+  let html = '';
+  CATS.forEach(cat => {
+    html += `<div class="sidebar-cat">${cat}</div>`;
+    SERVICES.filter(s => s.cat === cat).forEach(s => {
+      html += `<a class="sidebar-item" href="#${s.id}" data-id="${s.id}" onclick="closeDrawer()">
+        <span class="sidebar-dot" style="background:${catColors[s.cat]}"></span>${s.title}
+      </a>`;
+    });
+  });
+  return html;
+}
+
+function renderContent() {
+  let html = '';
+  let lastCat = '';
+  SERVICES.forEach(s => {
+    if (s.cat !== lastCat) {
+      html += `<div class="cat-divider">
+        <div class="cat-divider-line"></div>
+        <div class="cat-divider-label" style="color:${catColors[s.cat]}">${s.cat}</div>
+        <div class="cat-divider-line"></div>
+      </div>`;
+      lastCat = s.cat;
+    }
+    html += `<section class="service-section" id="${s.id}">
+      <div class="service-header">
+        <div class="service-icon" style="background:${s.iconBg}">${s.icon}</div>
+        <div>
+          <div class="service-title">${s.title}</div>
+          <div class="service-sub">${s.sub}</div>
+          <div class="badges">${s.badges.map(b => `<span class="badge ${b.c}">${b.t}</span>`).join('')}</div>
+        </div>
+      </div>
+      <div class="info-grid">${s.info.map(i => `<div class="info-cell"><div class="lbl">${i.l}</div><div class="val">${i.v}</div></div>`).join('')}</div>
+      <div class="two-col">
+        <div class="col-card">
+          <h4>Dokumen yang dibutuhkan</h4>
+          <ul class="doc-list">${s.docs.map(d => `<li>${d}</li>`).join('')}</ul>
+        </div>
+        <div class="col-card">
+          <h4>Alur proses</h4>
+          <ol class="step-list">${s.steps.map((st, i) => `<li><span class="step-num ${sc(st.p)}">${i+1}</span><span>${st.t}</span></li>`).join('')}</ol>
+        </div>
+      </div>
+      <div class="platform-row">
+        <span class="plbl">Platform</span>
+        <span class="pval">${s.platform}</span>
+        <span class="fee badge b-gray">${s.fee}</span>
+      </div>
+      ${s.note ? `<div class="note-box"><span>ℹ️</span><span>${s.note}</span></div>` : ''}
+      ${s.warn ? `<div class="warn-box"><span>⚠️</span><span>${s.warn}</span></div>` : ''}
+    </section>`;
+  });
+  document.getElementById('mainContent').innerHTML = html;
+}
+
+function filterSidebar(q, source) {
+  const target = source === 'drawer' ? '#drawerNav' : '#sideNav';
+  document.querySelectorAll(target + ' .sidebar-item').forEach(item => {
+    item.style.display = item.textContent.toLowerCase().includes(q.toLowerCase()) ? '' : 'none';
+  });
+}
+
+function openDrawer() {
+  document.getElementById('drawer').classList.add('open');
+  document.getElementById('overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeDrawer() {
+  document.getElementById('drawer').classList.remove('open');
+  document.getElementById('overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function updateActive() {
+  const sections = document.querySelectorAll('.service-section');
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 140) current = s.id; });
+  document.querySelectorAll('.sidebar-item').forEach(item => {
+    item.classList.toggle('active', item.dataset.id === current);
+  });
+  const doc = document.documentElement;
+  const pct = (window.scrollY / (doc.scrollHeight - doc.clientHeight)) * 100;
+  document.getElementById('progress').style.width = pct + '%';
+}
+
+// Init
+document.getElementById('sideNav').innerHTML = buildNavHTML('side');
+document.getElementById('drawerNav').innerHTML = buildNavHTML('drawer');
+renderContent();
+window.addEventListener('scroll', updateActive);
+updateActive();
+</script>
+</body>
+</html>
